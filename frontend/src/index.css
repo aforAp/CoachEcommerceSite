@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@700&display=swap');
+
+ @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
+
+@theme {
+  --font-fraunces: "Fraunces", serif;
+}
+
+@layer utilities {
+  .underlines {
+    @apply relative w-fit cursor-pointer after:absolute after:-bottom-0.5
+    after:left-0 after:h-px after:w-full after:bg-current after:opacity-0
+    after:transition-opacity after:duration-200 after:delay-200 after:content-['']
+    hover:after:opacity-100 hover:after:delay-0;
+  }
+  
+  .brand-logo-text {
+    @apply tracking-[2px] inline-block font-bold;
+    font-family: "Bodoni Moda", serif;
+    transform: scaleY(0.72);
+    transform-origin: center;
+  }
+
+.brand-name {
+  font-family: "Bree Serif", serif;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  @apply capitalize;
+}
+}
+
+@utility word-spacing-custom {
+  word-spacing: 8px;
+}
