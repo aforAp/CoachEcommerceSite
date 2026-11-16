@@ -19,7 +19,7 @@
   }
   
   .brand-logo-text {
-    @apply tracking-[2px] inline-block font-bold;
+    @apply tracking-[2px] inline-block font-bold sm:text-left sm:w-[100px];
     font-family: "Bodoni Moda", serif;
     transform: scaleY(0.72);
     transform-origin: center;

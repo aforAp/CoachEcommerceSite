@@ -57,7 +57,7 @@ const [isSearchFocused, setIsSearchFocused] = useState(false);
   }
 
   return (
-    <div className="sticky top-3 z-40 grid w-full grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center bg-white px-6">
+    <div className="sticky top-3 z-40 grid w-full grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center max-sm:hidden bg-white px-6">
       <div className="flex min-w-0 items-center gap-4 max-[640px]:hidden">
       <div
         className="relative"
