@@ -27,18 +27,25 @@ const NavMenu = ({ menu }: NavMenuProps) => {
         menu.imageCategoryLabels?.includes(activeCategory ?? "") ||
         menu.imageLinkLabels?.includes(activeLink ?? "")))
 
+  const layoutClass = menu.centered
+    ? "mx-auto grid min-h-[calc(100vh-9rem)] w-full max-w-[1200px] grid-cols-[minmax(190px,0.9fr)_minmax(190px,0.9fr)_minmax(280px,1.4fr)] items-center gap-8 px-8 py-8 [font-family:Garamond,serif] max-[700px]:grid-cols-[minmax(130px,0.8fr)_minmax(0,1.2fr)] max-[700px]:gap-5 max-[500px]:grid-cols-1 max-[500px]:px-6"
+    : "grid min-h-[calc(100vh-9rem)] w-full grid-cols-[minmax(160px,0.8fr)_minmax(200px,1fr)_minmax(0,2.4fr)] gap-8 px-10 py-8 [font-family:Garamond,serif] max-[700px]:grid-cols-[minmax(130px,0.8fr)_minmax(0,1.2fr)] max-[700px]:gap-5 max-[500px]:grid-cols-1 max-[500px]:px-6"
+
   return (
     <section
       aria-label={menu.ariaLabel}
-      className="grid min-h-[calc(100vh-9rem)] w-full grid-cols-[minmax(160px,0.8fr)_minmax(200px,1fr)_minmax(0,2.4fr)] gap-8 px-10 py-8 [font-family:Garamond,serif] max-[700px]:grid-cols-[minmax(130px,0.8fr)_minmax(0,1.2fr)] max-[700px]:gap-5 max-[500px]:grid-cols-1 max-[500px]:px-6"
+      className={layoutClass}
     >
-      <nav aria-label={`${menu.label} categories`} className="flex flex-col items-start gap-3">
+      <nav
+        aria-label={`${menu.label} categories`}
+        className={`flex flex-col gap-3 ${menu.centered ? "items-center text-center" : "items-start"}`}
+      >
         {menu.categories.map(({ label, href }) => (
           <h1 className="m-0 text-lg font-normal leading-tight" key={label}>
             {href ? (
               <a
                 aria-current={activeCategory === label ? "true" : undefined}
-                className="cursor-pointer text-left transition-opacity hover:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black"
+                className={`cursor-pointer transition-opacity hover:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black ${menu.centered ? "text-center" : "text-left"}`}
                 href={href}
                 onFocus={() => selectCategory(label)}
                 onMouseEnter={() => selectCategory(label)}
@@ -48,7 +55,7 @@ const NavMenu = ({ menu }: NavMenuProps) => {
             ) : (
               <button
                 aria-pressed={activeCategory === label}
-                className="cursor-pointer text-left transition-opacity hover:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black"
+                className={`cursor-pointer transition-opacity hover:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black ${menu.centered ? "text-center" : "text-left"}`}
                 onFocus={() => selectCategory(label)}
                 onMouseEnter={() => selectCategory(label)}
                 type="button"
@@ -60,7 +67,10 @@ const NavMenu = ({ menu }: NavMenuProps) => {
         ))}
       </nav>
 
-      <div aria-live="polite" className="flex flex-col items-start gap-4 pt-1">
+      <div
+        aria-live="polite"
+        className={`flex flex-col gap-4 pt-1 ${menu.centered ? "items-center text-center" : "items-start"}`}
+      >
         {category?.links?.map(({ label, href }) => (
           <a
             className="text-sm underline-offset-4 hover:underline focus-visible:underline"

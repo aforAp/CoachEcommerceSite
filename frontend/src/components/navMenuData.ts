@@ -21,6 +21,7 @@ export type NavMenuConfig = {
   label: string
   ariaLabel: string
   categories: NavMenuCategory[]
+  centered?: boolean
   initialCategory?: string
   image?: NavMenuImage
   showImageInitially?: boolean
@@ -57,6 +58,42 @@ const newImage = {
   css: "block w-full h-auto object-contain object-top",
 }
 
+const coachtopiaImage = {
+  src: "/assets/20261102-rtl-nav-coachtopia.webp",
+  alt: "Coachtopia model carrying a black shoulder bag",
+  css: "block w-full h-auto max-h-[360px] object-contain object-center",
+}
+
+const blackBag = {
+  src: "/assets/cgq18_blk_a92 (1).webp",
+  alt: "Coachtopia model carrying a black shoulder bag",
+  css: "block w-full h-auto max-h-[360px] object-contain object-center",
+}
+
+const giftImage = {
+  src: "/assets/20261028-gift-nav.webp",
+  alt: "Coach gift box and red leather bag",
+  css: "block w-full h-auto max-h-[360px] object-contain object-center",
+}
+
+const giftRecipientImage = {
+  src: "/assets/20261102-rtl-nav-gift-recipient.jfif",
+  alt: "Coach gifts by recipient",
+  css: "block w-full h-auto max-h-[360px] object-contain object-center",
+}
+
+const giftGuideImage = {
+  src: "/assets/20261102-rtl-nav-gift-guide.jfif",
+  alt: "Coach gift guide",
+  css: "block w-full h-auto max-h-[360px] object-contain object-center",
+}
+
+const giftBestsellerImage = {
+  src: "/assets/20261102-rtl-nav-bestseller.jfif",
+  alt: "Coach gift bestsellers",
+  css: "block w-full h-auto max-h-[360px] object-contain object-center",
+}
+
 const menCategories: NavMenuCategory[] = [
   {
     label: "View All",
@@ -68,7 +105,8 @@ const menCategories: NavMenuCategory[] = [
     links: [
       { label: "View All", href: "https://www.coach.com/shop/new/mens-new-arrivals/view-all" },
       { label: "Bags", href: "https://www.coach.com/shop/new/mens-new-arrivals/bags" },
-      { label: "Wallets", href: "https://www.coach.com/shop/new/mens-new-arrivals/wallets" },
+      { label: "Accessories", href: "https://www.coach.com/shop/new/mens-new-arrivals/wallets" },
+      { label: "Drops", href: "https://www.coach.com/shop/new/mens-new-arrivals/wallets" },
     ],
   },
   {
@@ -261,8 +299,116 @@ export const navMenus = {
     image: newImage,
     showImageInitially: true,
   },
-  gifts: landingMenu("Gifts", "Gifts shopping categories", [
-    { label: "For Her", href: "https://www.coach.com/shop/gifts/for-her/view-all" },
-    { label: "For Him", links: menCategories.find(({ label }) => label === "Gifts")?.links },
-  ]),
-} satisfies Record<"women" | "men" | "bags" | "new" | "gifts", NavMenuConfig>
+  gifts: {
+    label: "Gifts",
+    ariaLabel: "Gifts shopping categories",
+    centered: true,
+    image: giftImage,
+    showImageInitially: true,
+    categories: [
+      { label: "View All", href: "https://www.coach.com/shop/gifts/view-all" },
+      { label: "For Her", href: "https://www.coach.com/shop/gifts/for-her/view-all" },
+      { label: "For Him", href: "https://www.coach.com/shop/gifts/for-him/view-all" },
+      {
+        label: "Bestsellers",
+        href: "https://www.coach.com/shop/women/bestsellers",
+        image: giftBestsellerImage,
+      },
+      { label: "Stocking Stuffers", href: "https://www.coach.com/shop/gifts/stocking-stuffers" },
+      {
+        label: "Gifts by Recipient",
+        href: "https://www.coach.com/shop/gifts/view-all",
+          links: [
+          { label: "For You", href: "https://www.coach.com/shop/gifts/for-self-gifting" },
+          { label: "For Them", href: "https://www.coach.com/shop/gifts/for-loved-ones" },
+          { label: "For All Their Events", href: "https://www.coach.com/shop/gifts/for-the-party-girl" },
+          { label: "For Their Next Trip", href: "https://www.coach.com/shop/gifts/for-jetsetter" },
+        ],
+        image: giftRecipientImage,
+      },
+      {
+        label: "Gift Guide",
+        href: "https://www.coach.com/shop/gifts/gift-guide",
+        image: giftGuideImage,
+      },
+      { label: "Gift Cards", href: "https://www.coach.com/shop/gifts/gift-services/gift-cards" },
+      {
+        label: "AI Gift Assistant",
+        image: giftRecipientImage,
+      },
+    ],
+  },
+  coachtopia: {
+    label: "Coachtopia",
+    ariaLabel: "Coachtopia shopping categories",
+    centered: true,
+    image: coachtopiaImage,
+    showImageInitially: true,
+    categories: [
+      {
+        label: "New",
+        href: "https://www.coach.com/shop/coachtopia/all/new",
+        image: blackBag,
+        links: [
+          {label: "View All", href: "https:youtube.com"},
+          {label: "Bags",href: "https:youtube.com"},
+          {label: "Accessories",href: "https:youtube.com"},
+          {label: "Drops", href: "https:youtube.com"}
+        ]
+      },
+      {
+        label: "Bags",
+        href: "https://www.coach.com/shop/coachtopia/all/bags",
+        image: coachtopiaImage,
+        links: [
+          { label: "View All", href: "https://www.coach.com/shop/coachtopia/all/bags", image: coachtopiaImage },
+          { label: "New", href: "https://www.coach.com/shop/coachtopia/bags/new", image: coachtopiaImage },
+          { label: "Shoulder Bags", href: "https://www.coach.com/shop/coachtopia/bags/shoulder-bags", image: coachtopiaImage },
+          { label: "Crossbody Bags", href: "https://www.coach.com/shop/coachtopia/bags/crossbody-bags", image: coachtopiaImage },
+          { label: "Totes", href: "https://www.coach.com/shop/coachtopia/bags/totes", image: coachtopiaImage },
+          { label: "Alter/Ego Bags", href: "https://www.coach.com/shop/coachtopia/alter-ego-collection?filterCategory=Bags", image: coachtopiaImage },
+          { label: "Bowling Bags", href: "https://www.coach.com/shop/coachtopia/bags/bowling-bags", image: coachtopiaImage },
+          { label: "Coachtopia Loop Bags", href: "https://www.coach.com/shop/coachtopia/coachtopia-loop?filterCategory=Bags", image: coachtopiaImage },
+          { label: "Gifts", href: "https://www.coach.com/shop/coachtopia/gifts?filterCategory=Bags", image: coachtopiaImage },
+        ],
+      },
+      {
+        label: "Accessories",
+        href: "https://www.coach.com/shop/coachtopia/featured/accessories",
+        image: coachtopiaImage,
+        links: [
+          { label: "View All", href: "https://www.coach.com/shop/coachtopia/featured/accessories", image: coachtopiaImage },
+          { label: "New", href: "https://www.coach.com/shop/coachtopia/accessories/new", image: newImage },
+          { label: "Wallets", href: "https://www.coach.com/shop/coachtopia/accessories/wallets-view-all", image: { src: "/assets/Wallet.webp", alt: "Coach wallets" } },
+          { label: "Bag Charms", href: "https://www.coach.com/shop/coachtopia/accessories/bag-charms", image: bagsImage },
+          { label: "Gifts", href: "https://www.coach.com/shop/coachtopia/gifts?filterCategory=Accessories|Bag+Charms+and+Straps|Wallets+and+Wristlets", image: coachtopiaImage },
+        ],
+      },
+      {
+        label: "Featured",
+        href: "https://www.coach.com/shop/coachtopia/featured/view-all",
+      },
+      {
+        label: "Gifts",
+        href: "https://www.coach.com/shop/coachtopia/gifts",
+        image: coachtopiaImage,
+        links: [
+          { label: "View All", href: "https://www.coach.com/shop/coachtopia/gifts", image: coachtopiaImage },
+          { label: "Bags", href: "https://www.coach.com/shop/coachtopia/gifts?filterCategory=Bags", image: coachtopiaImage },
+          { label: "Accessories", href: "https://www.coach.com/shop/coachtopia/gifts?filterCategory=Accessories|Bag+Charms+and+Straps|Wallets+and+Wristlets", image: coachtopiaImage },
+          { label: "Gifts Under $200", href: "https://www.coach.com/shop/coachtopia/gifts?pmin=20&pmax=200", image: coachtopiaImage },
+        ],
+      },
+      {
+        label: "Circularity",
+        href: "https://www.coach.com/shop/coachtopia/the-world-of-coachtopia",
+        links: [
+          { label: "The Road to Circularity", href: "https://www.coach.com/shop/coachtopia/the-world-of-coachtopia/the-road-to-circularity-2" },
+          { label: "Community Action", href: "https://www.coach.com/shop/coachtopia/the-world-of-coachtopia/community-action" },
+          { label: "How To Coachtopia", href: "https://www.coach.com/shop/coachtopia/the-world-of-coachtopia/how-to-coachtopia" },
+          { label: "About Coachtopia", href: "https://www.coach.com/shop/coachtopia/the-world-of-coachtopia" },
+        ],
+      },
+    ],
+  },
+} satisfies Record<"women" | "men" | "bags" | "new" | "gifts" | "coachtopia", NavMenuConfig>

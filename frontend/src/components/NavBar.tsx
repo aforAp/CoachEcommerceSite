@@ -5,11 +5,11 @@ const NavBar = () => {
   const [activeBrand, setActiveBrand] = useState<"coach" | "outlet">("outlet")
 
   const tabClass =
-    "relative mt-3 flex h-8 shrink-0 cursor-pointer items-center justify-center gap-1 rounded-t-[10px] border-0 text-[#111] transition-colors duration-[140ms] focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-white max-[640px]:w-auto max-[640px]:min-w-0 max-[640px]:max-w-[200px] max-[640px]:flex-1"
+    "relative mt-3 flex h-8 shrink-0 cursor-pointer items-center justify-center gap-1 rounded-t-[10px] border-0 text-[#111] transition-colors duration-[140ms] focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-white max-[640px]:w-auto max-[640px]:min-w-0 max-[640px]:max-w-[200px]"
   const activeTabClass =
-    "bg-white sm:max-w-[270px] md:max-w-[250px] text-center before:absolute before:bottom-0 before:-left-[10px] before:size-[10px] before:rounded-br-[10px] before:shadow-[5px_5px_0_5px_white] before:content-[''] after:absolute after:right-[-10px] after:bottom-0 after:size-[10px] after:rounded-bl-[10px] after:shadow-[-5px_5px_0_5px_white] after:content-['']"
+    "bg-white sm:max-w-[270px] md:max-w-[230px] text-center before:absolute before:bottom-0 before:-left-[10px] before:size-[10px] before:rounded-br-[5px] before:shadow-[5px_5px_0_5px_white] before:content-[''] after:absolute after:right-[-10px] after:bottom-0 after:size-[10px] after:rounded-bl-[5px] after:shadow-[-5px_5px_0_5px_white] after:content-['']"
   const inactiveTabClass =
-    "bg-transparent text-white hover:bg-white hover:text-[#111] hover:before:absolute hover:before:bottom-0 hover:before:-left-[10px] hover:before:size-[10px] hover:before:rounded-br-[10px] hover:before:shadow-[5px_5px_0_5px_white] hover:before:content-[''] hover:after:absolute hover:after:right-[-10px] hover:after:bottom-0 hover:after:size-[10px] hover:after:rounded-bl-[10px] hover:after:shadow-[-5px_5px_0_5px_white] hover:after:content-['']"
+    "bg-transparent text-white hover:bg-white hover:text-[#111] hover:before:absolute hover:before:bottom-0 hover:before:-left-[10px] hover:before:size-[10px] hover:before:rounded-br-[5px] hover:before:shadow-[5px_5px_0_5px_white] hover:before:content-[''] hover:after:absolute hover:after:right-[-10px] hover:after:bottom-0 hover:after:size-[10px] hover:after:rounded-bl-[5px] hover:after:shadow-[-5px_5px_0_5px_white] hover:after:content-['']"
 
   return (
     <header className="h-[44px] bg-[#333]">
@@ -20,17 +20,17 @@ const NavBar = () => {
         >
           <button
             aria-pressed={activeBrand === "coach"}
-            className={`${tabClass} w-[158px] ${activeBrand === "coach" ? activeTabClass : inactiveTabClass}`}
+            className={`${tabClass} w-[158px] max-[640px]:flex-1 ${activeBrand === "coach" ? activeTabClass : inactiveTabClass}`}
             onClick={() => setActiveBrand("coach")}
             type="button"
           >
-            <span className={cn("brand-logo-text", "md:text-[18px] md:mt-[8px]")}>
+            <span className={cn("brand-logo-text", "md:text-[18px] !md:mt-[8px] ml-7")}>
               COACH
             </span>
           </button>
          <button
   aria-pressed={activeBrand === "outlet"}
-  className={`${tabClass} md:w-[204px] sm:w-full ${
+  className={`${tabClass} md:w-[204px] sm:w-full max-[640px]:flex-[3] ${
     activeBrand === "outlet" ? activeTabClass : inactiveTabClass
   }`}
   onClick={() => setActiveBrand("outlet")}
