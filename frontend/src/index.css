@@ -4,15 +4,19 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@700&display=swap');
 
- @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
+
 @import "tw-animate-css";
+
 @import "shadcn/tailwind.css";
+
 @import "@fontsource-variable/geist";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme {
   --font-fraunces: "Fraunces", serif;
+  --font-weight-light: 600;
 }
 
 @layer utilities {
@@ -22,20 +26,29 @@
     after:transition-opacity after:duration-200 after:delay-200 after:content-['']
     hover:after:opacity-100 hover:after:delay-0;
   }
-
+  
   .brand-logo-text {
     @apply tracking-[2px] inline-block font-bold sm:text-left sm:w-[100px];
     font-family: "Bodoni Moda", serif;
     transform: scaleY(0.72);
     transform-origin: center;
   }
-
-.brand-name {
-  font-family: "Bree Serif", serif;
-  font-weight: 400;
-  letter-spacing: -0.5px;
-  @apply capitalize;
-}
+  
+  .atTopList {
+    @apply text-[10px] font-[550] tracking-[1.4px] text-black/70 mt-4 mb-5 block
+    scale-x-110 text-center uppercase;
+  }
+  
+  .atTopList-text {
+   @apply text-[15px] absolute -mt-9 font-light capitalize text-black scale-x-125;
+  }
+  
+  .brand-name {
+    font-family: "Bree Serif", serif;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    @apply capitalize;
+  }
 }
 
 @utility word-spacing-custom {
@@ -44,16 +57,9 @@
 
 @layer utilities {
   .mobile-nav-indicator {
-    transition:
-      transform 500ms ease-in-out,
+    transition: transform 500ms ease-in-out,
       width 500ms ease-in-out;
     transition-delay: 500ms;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .mobile-nav-indicator {
-      transition: none;
-    }
   }
 }
 
@@ -173,9 +179,11 @@
   * {
     @apply border-border outline-ring/50;
   }
+  
   body {
     @apply bg-background text-foreground;
   }
+  
   html {
     @apply font-sans;
   }

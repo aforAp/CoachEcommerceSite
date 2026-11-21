@@ -1,5 +1,7 @@
 import { useState } from "react"
-import { Heart, MapPin, Search, ShoppingBag, User2Icon } from "lucide-react"
+import { MapPin, Search } from "lucide-react"
+import ShoppingBag from "../../public/shoppingBag.svg";
+import {heart, personIcon} from "../components/ui/ImageImports.ts";
 import NavMenu from "./NavMenu"
 import { navMenus } from "./navMenuData"
 import { cn } from "../utils/clsx"
@@ -28,7 +30,7 @@ const [isSearchFocused, setIsSearchFocused] = useState(false);
   }
 
   return (
-    <div className="sticky top-3 z-40 grid w-full grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center max-sm:hidden bg-white px-6">
+    <div className="sticky top-0 z-40 grid w-full grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center max-sm:hidden bg-white px-6">
       <div className="flex min-w-0 items-center gap-4 max-[640px]:hidden">
       <div
         className="relative"
@@ -129,11 +131,11 @@ const [isSearchFocused, setIsSearchFocused] = useState(false);
           <Search className="absolute right-1 size-[22px]" />
         </span>
         <span className="flex gap-3 max-[640px]:gap-2">
-          <Heart />
-          <User2Icon />
+          <img src={heart} alt="heartIcon" />
+          <img src={personIcon} alt="personIcon" />
           <span className="relative flex">
-            <span className="absolute -mt-1 ml-3.5 h-3 w-3 rounded-full bg-green-400 text-center text-[10px]">0</span>
-            <ShoppingBag />
+            <span className="absolute ml-[9.5px] mt-2 text-center text-[10px]">0</span>
+            <img src={ShoppingBag} alt="the shopping Bag" />
           </span>
         </span>
       </div>

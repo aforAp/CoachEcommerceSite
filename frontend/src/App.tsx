@@ -3,6 +3,8 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
 import NavBar from "./components/NavBar"
 import SearchBar from "./components/SearchBar"
 import CountrySelectorPage from "./components/pages/CountrySelectorPage"
+import WelcomeBanner from "./components/pages/WelcomeBanner"
+import AtTopList from "./components/pages/AtTopList"
 
 const HomePage = () => {
   const [mainScrollTop, setMainScrollTop] = useState(0)
@@ -29,6 +31,8 @@ const HomePage = () => {
           }`}
         />
         <SearchBar onMenuScroll={setMenuScrollTop} />
+        <WelcomeBanner />
+        <AtTopList />
       </div>
     </div>
   )
