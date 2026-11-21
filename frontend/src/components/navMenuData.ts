@@ -64,6 +64,12 @@ const coachtopiaImage = {
   css: "block w-full h-auto max-h-[360px] object-contain object-center",
 }
 
+const coachtopiaImage2 = {
+  src: "https://plus.unsplash.com/premium_photo-1661436223190-2737de340501?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
+  alt: "Coachtopia model carrying a black shoulder bag",
+  css: "block w-full h-auto max-h-[360px] object-contain object-center",
+}
+
 const blackBag = {
   src: "/assets/cgq18_blk_a92 (1).webp",
   alt: "Coachtopia model carrying a black shoulder bag",
@@ -338,6 +344,29 @@ export const navMenus = {
       },
     ],
   },
+  sale: {
+    label: "Sale",
+    ariaLabel: "Sale shopping categories",
+    categories: [
+      { label: "View All Sale", href: "https://www.coach.com/shop/sale" },
+      {
+        label: "Women",
+        links: [
+          { label: "Bags", href: "https://www.coach.com/shop/sale/women/handbags" },
+          { label: "Wallets", href: "https://www.coach.com/shop/sale/women/wallets-wristlets" },
+          { label: "Shoes", href: "https://www.coach.com/shop/sale/women/shoes" },
+        ],
+      },
+      {
+        label: "Men",
+        links: [
+          { label: "Bags", href: "https://www.coach.com/shop/sale/men/bags" },
+          { label: "Wallets", href: "https://www.coach.com/shop/sale/men/wallets" },
+          { label: "Accessories", href: "https://www.coach.com/shop/sale/men/accessories" },
+        ],
+      },
+    ],
+  },
   coachtopia: {
     label: "Coachtopia",
     ariaLabel: "Coachtopia shopping categories",
@@ -359,7 +388,7 @@ export const navMenus = {
       {
         label: "Bags",
         href: "https://www.coach.com/shop/coachtopia/all/bags",
-        image: coachtopiaImage,
+        image: coachtopiaImage2,
         links: [
           { label: "View All", href: "https://www.coach.com/shop/coachtopia/all/bags", image: coachtopiaImage },
           { label: "New", href: "https://www.coach.com/shop/coachtopia/bags/new", image: coachtopiaImage },
@@ -411,4 +440,4 @@ export const navMenus = {
       },
     ],
   },
-} satisfies Record<"women" | "men" | "bags" | "new" | "gifts" | "coachtopia", NavMenuConfig>
+} satisfies Record<"women" | "men" | "bags" | "new" | "gifts" | "sale" | "coachtopia", NavMenuConfig>

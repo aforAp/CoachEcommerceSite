@@ -1,8 +1,10 @@
 import { useState } from "react"
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
 import NavBar from "./components/NavBar"
 import SearchBar from "./components/SearchBar"
+import CountrySelectorPage from "./components/pages/CountrySelectorPage"
 
-const App = () => {
+const HomePage = () => {
   const [mainScrollTop, setMainScrollTop] = useState(0)
   const [menuScrollTop, setMenuScrollTop] = useState(0)
   const isBrandNavHidden = mainScrollTop > 8 || menuScrollTop > 8
@@ -31,5 +33,15 @@ const App = () => {
     </div>
   )
 }
+
+const App = () => (
+  <BrowserRouter>
+    <Routes>
+      <Route element={<HomePage />} path="/" />
+      <Route element={<CountrySelectorPage />} path="/country-selector" />
+      <Route element={<Navigate replace to="/" />} path="*" />
+    </Routes>
+  </BrowserRouter>
+)
 
 export default App

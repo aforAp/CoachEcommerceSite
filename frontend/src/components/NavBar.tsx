@@ -1,99 +1,61 @@
-import { useState } from "react"
-import { cn } from "../utils/clsx"
+import { useCallback, useState } from "react"
+import { Menu } from "lucide-react"
+import BrandSelector from "./BrandSelector"
+import type { ActiveBrand } from "./BrandSelector"
+import Sheet from "./pages/Sheet"
 
 const NavBar = () => {
-  const [activeBrand, setActiveBrand] = useState<"coach" | "outlet">("outlet")
-
-  const tabClass =
-    "relative mt-3 flex h-8 shrink-0 cursor-pointer items-center justify-center gap-1 rounded-t-[10px] border-0 text-[#111] transition-colors duration-[140ms] focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-white max-[640px]:w-auto max-[640px]:min-w-0 max-[640px]:max-w-[200px]"
-  const activeTabClass =
-    "bg-white sm:max-w-[270px] md:max-w-[230px] text-center before:absolute before:bottom-0 before:-left-[10px] before:size-[10px] before:rounded-br-[5px] before:shadow-[5px_5px_0_5px_white] before:content-[''] after:absolute after:right-[-10px] after:bottom-0 after:size-[10px] after:rounded-bl-[5px] after:shadow-[-5px_5px_0_5px_white] after:content-['']"
-  const inactiveTabClass =
-    "bg-transparent text-white hover:bg-white hover:text-[#111] hover:before:absolute hover:before:bottom-0 hover:before:-left-[10px] hover:before:size-[10px] hover:before:rounded-br-[5px] hover:before:shadow-[5px_5px_0_5px_white] hover:before:content-[''] hover:after:absolute hover:after:right-[-10px] hover:after:bottom-0 hover:after:size-[10px] hover:after:rounded-bl-[5px] hover:after:shadow-[-5px_5px_0_5px_white] hover:after:content-['']"
+  const [activeBrand, setActiveBrand] = useState<ActiveBrand>("outlet")
+  const [isSheetOpen, setIsSheetOpen] = useState(false)
+  const closeSheet = useCallback(() => setIsSheetOpen(false), [])
 
   return (
-    <header className="h-[44px] bg-[#333]">
-      <div className="mx-auto flex h-full w-full max-w-[600px] items-center justify-center max-[640px]:justify-between max-[640px]:gap-2 max-[640px]:px-3">
-        <nav
-          className="mx-auto flex h-full w-full max-w-[424px] gap-8 max-[640px]:mx-0 max-[640px]:w-auto max-[640px]:max-w-none max-[640px]:flex-1 max-[640px]:gap-6"
-          aria-label="Brand selection"
-        >
-          <button
-            aria-pressed={activeBrand === "coach"}
-            className={`${tabClass} w-[158px] max-[640px]:flex-1 ${activeBrand === "coach" ? activeTabClass : inactiveTabClass}`}
-            onClick={() => setActiveBrand("coach")}
-            type="button"
-          >
-            <span className={cn("brand-logo-text", "md:text-[18px] !md:mt-[8px] ml-7")}>
-              COACH
-            </span>
-          </button>
-         <button
-  aria-pressed={activeBrand === "outlet"}
-  className={`${tabClass} md:w-[204px] sm:w-full max-[640px]:flex-[3] ${
-    activeBrand === "outlet" ? activeTabClass : inactiveTabClass
-  }`}
-  onClick={() => setActiveBrand("outlet")}
-  type="button"
->
-  <span className={cn("brand-logo-text", "md:text-[18px]")}>
-    COACH
-  </span>
-
-  <span className="text-[16px] leading-none font-normal scale-75 md:-ml-[20px] mt-[1.5px] tracking-[0.04em] max-sm:text-[13px]">
-    OUTLET
-  </span>
-</button>
-        </nav>
-        <div className="hidden shrink-0 items-center gap-2 max-[640px]:flex">
-          <button
-            aria-label="Shopping bag, 0 items"
-            className="relative grid size-8 place-items-center text-white"
-            type="button"
-          >
-            <svg
-              aria-hidden="true"
-              className="size-[21px]"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth="1.7"
+    <>
+      <header className="h-[44px] bg-[#333]">
+        <div className="mx-auto flex h-full w-full max-w-[600px] items-center justify-center max-[640px]:justify-between max-[640px]:gap-2 max-[640px]:px-3">
+          <BrandSelector
+            activeBrand={activeBrand}
+            onChange={setActiveBrand}
+          />
+          <div className="hidden shrink-0 items-center gap-2 max-[640px]:flex">
+            <button
+              aria-label="Shopping bag, 0 items"
+              className="relative grid size-8 place-items-center text-white"
+              type="button"
             >
-              <path d="M5.5 8h13l1 12h-15l1-12Z" strokeLinejoin="round" />
-              <path d="M9 9V6a3 3 0 0 1 6 0v3" strokeLinecap="round" />
-            </svg>
-            <span className="absolute right-0 top-1 grid size-[15px] place-items-center rounded-full border border-white bg-emerald-400 text-[9px] leading-none font-semibold text-[#111]">
-              0
-            </span>
-          </button>
-          <button
-            aria-label="Open menu"
-            className="grid size-8 place-items-center text-white"
-            type="button"
-          >
-           <svg
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  strokeWidth="2"
-  strokeLinecap="round"
-  strokeLinejoin="round"
->
-  <path d="M10 12H3" />
-  <path d="M13 19 L3 19" />
-  <path d="M13.5 5 L3 5" />
-  <path d="M15 19.5 L17.5 13.064" />
-  <path d="M17.5 13.064 A4.67 4.67 0 0 1 18.264 4" />
-  <path d="M19.5 3.877 A4.86 4.86 0 0 1 18.5 13.333" />
-  <path d="M33.736 7.614 A3.35 3.35 0 0 1 30.236 6.969" />
-</svg>
-          </button>
+              <svg
+                aria-hidden="true"
+                className="size-[21px]"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth="1.7"
+              >
+                <path d="M5.5 8h13l1 12h-15l1-12Z" strokeLinejoin="round" />
+                <path d="M9 9V6a3 3 0 0 1 6 0v3" strokeLinecap="round" />
+              </svg>
+              <span className="absolute right-0 top-1 grid size-[15px] place-items-center rounded-full border border-white bg-emerald-400 text-[9px] leading-none font-semibold text-[#111]">
+                0
+              </span>
+            </button>
+            <button
+              aria-label="Open menu"
+              className="grid size-8 place-items-center text-white"
+              onClick={() => setIsSheetOpen(true)}
+              type="button"
+            >
+              <Menu aria-hidden="true" className="size-6" />
+            </button>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+      <Sheet
+        activeBrand={activeBrand}
+        isOpen={isSheetOpen}
+        onBrandChange={setActiveBrand}
+        onClose={closeSheet}
+      />
+    </>
   )
 }
 
