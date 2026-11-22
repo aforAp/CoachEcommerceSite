@@ -192,7 +192,7 @@ const [isSearchFocused, setIsSearchFocused] = useState(false);
             Gifts
           </button>
         </h1>
-        <h1 className="m-0">
+        <h1 className="m-0 mt-2">
           <button
             className="underlines tracking-[0.1rem]"
             onFocus={() => setActiveMenu("coachtopia")}
