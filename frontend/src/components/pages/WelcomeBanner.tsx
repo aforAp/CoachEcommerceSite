@@ -1,4 +1,5 @@
 import { cn } from "@/utils/clsx"
+import { useEffect, useState } from "react"
 
 type BannerItem = {
   image: string
@@ -39,13 +40,28 @@ const bannerData: BannerItem[] = [
 ]
 
 const WelcomeBanner = () => {
+  const [width, setWidth] = useState<number>(window.innerWidth);
+
+
+  useEffect(() => {
+    const adjustWidth = () => {
+      setWidth(window.innerWidth)
+    }
+
+    adjustWidth()
+    window.addEventListener("resize", adjustWidth)
+
+    return () => window.removeEventListener("resize", adjustWidth)
+  }, [])
   return (
     <section aria-label="Welcome banner" className="w-full bg-white">
-      <div className="grid grid-cols-2 px-3 py-3 max-[640px]:grid-cols-1">
-        {bannerData.map((item, index) => (
+      <div className="grid grid-cols-2 py-3 w-full h-full max-[640px]:grid-cols-1">
+        {bannerData
+          .filter((_, index) => width >= 1024 || index !== 1)
+          .map((item) => (
           <article
             className={`relative min-h-[280px] overflow-hidden border border-black/5 bg-neutral-100 sm:min-h-[420px] ${
-              index === 2 ? "col-span-2 max-[640px]:col-span-1" : ""
+              item.count === 3 ? "col-span-2 max-[640px]:col-span-1" : ""
             }`}
             key={item.text1}
           >
@@ -75,7 +91,7 @@ const WelcomeBanner = () => {
                 className={cn(
                   "font-bold",
                   item.count === 1
-                    ? "text-[30px] text-right mr-6 scale-y-[0.7] scale-x-115"
+                    ? "text-[30px] text-right mr-3.5 scale-y-[0.7] scale-x-115"
                     :item.count === 2 ?
                     "text-[30px] text-left ml-6 scale-y-[0.7] scale-x-115"
                     : item.count === 3
@@ -89,7 +105,8 @@ const WelcomeBanner = () => {
                 className={cn(
                   "mt-1 max-w-xl text-[12px] font-medium leading-tight",
                   item.count === 1
-                    ? "text-right"
+                    ? "text-right -mr-20"
+                    :item.count === 2 ? "text-left -ml-4"
                     : item.count === 3
                       ? "text-left ml-40 text-[30px] font-bold capitalize scale-x-115"
                       : "text-left",
@@ -100,7 +117,7 @@ const WelcomeBanner = () => {
              
             </div>
           </article>
-        ))}
+          ))}
       </div>
     </section>
   )
