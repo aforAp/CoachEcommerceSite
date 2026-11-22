@@ -1,5 +1,5 @@
 import { cn } from "@/utils/clsx"
-import { useEffect, useState } from "react"
+import { useAppContext } from "../context/Context"
 
 type BannerItem = {
   image: string
@@ -40,19 +40,10 @@ const bannerData: BannerItem[] = [
 ]
 
 const WelcomeBanner = () => {
-  const [width, setWidth] = useState<number>(window.innerWidth);
+  const {width} = useAppContext();
 
 
-  useEffect(() => {
-    const adjustWidth = () => {
-      setWidth(window.innerWidth)
-    }
 
-    adjustWidth()
-    window.addEventListener("resize", adjustWidth)
-
-    return () => window.removeEventListener("resize", adjustWidth)
-  }, [])
   return (
     <section aria-label="Welcome banner" className="w-full bg-white">
       <div className="grid grid-cols-2 py-3 w-full h-full max-[640px]:grid-cols-1">
@@ -105,7 +96,7 @@ const WelcomeBanner = () => {
                 className={cn(
                   "mt-1 max-w-xl text-[12px] font-medium leading-tight",
                   item.count === 1
-                    ? "text-right -mr-20"
+                    ? "text-right translate-x-6"
                     :item.count === 2 ? "text-left -ml-4"
                     : item.count === 3
                       ? "text-left ml-40 text-[30px] font-bold capitalize scale-x-115"

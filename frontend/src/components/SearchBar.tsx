@@ -6,16 +6,16 @@ import NavMenu from "./NavMenu"
 import { navMenus } from "./navMenuData"
 import { cn } from "../utils/clsx"
 import CountryFlag from "./CountryFlag"
-import { getCountry, readSelectedCountry, saveSelectedCountry } from "./country"
+import { getCountry } from "./country"
 import type { CountryCode } from "./country"
+import { useAppContext } from "./context/Context"
 type ActiveMenu = keyof typeof navMenus | null
 type SearchBarProps = {
   onMenuScroll: (scrollTop: number) => void
 }
 
 const SearchBar = ({ onMenuScroll }: SearchBarProps) => {
-  const [selectedCountry, setSelectedCountry] =
-    useState<CountryCode>(readSelectedCountry)
+  const { selectedCountry, setSelectedCountry } = useAppContext()
   const [isOpen, setIsOpen] = useState(false)
 const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [activeMenu, setActiveMenu] = useState<ActiveMenu>(null)
@@ -25,7 +25,6 @@ const [isSearchFocused, setIsSearchFocused] = useState(false);
   }
   const selectCountry = (country: CountryCode) => {
     setSelectedCountry(country)
-    saveSelectedCountry(country)
     setIsOpen(false)
   }
 

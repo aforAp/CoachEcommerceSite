@@ -1,5 +1,5 @@
 import { cn } from "@/utils/clsx";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const DataSet = [
     {
         image:'https://cms.coach.com/i/coach/20261118-hp3-card1-desktop-v3?&w=960&sm=aspect&aspect=708:920&fmt=webp&$qlt_high$',
@@ -24,13 +24,13 @@ const DataSet = [
 ];
 
 const AtTopList = () => {
-    const navigate = useNavigate();
   return (
     <div>
         <h1 className="atTopList">at the top of the list</h1> 
     <div className="grid grid-cols-2 lg:gap-2 gap-1 lg:grid-cols-4">
         {DataSet.map((data, index) => (
-            <section id={index} className="h-[400px] relative" onClick={() => navigate(data.route)}>
+            <Link to={data.route}>
+            <section id={index} className="h-[400px] relative">
                 <img src={data.image} alt={data.text} className="h-full w-full" />
                 <h1
                     className={cn(
@@ -43,6 +43,7 @@ const AtTopList = () => {
                     {data.text}
                 </h1>
             </section>
+            </Link>
         ))}
       
     </div>

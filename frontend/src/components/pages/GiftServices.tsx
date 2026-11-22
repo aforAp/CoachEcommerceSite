@@ -6,38 +6,55 @@ import {
   useState,
   type PointerEvent as ReactPointerEvent,
 } from "react"
+import { Link } from "react-router-dom"
 
 type GiftService = {
   id: number
   title: string
   description: string
   icon: LucideIcon
+  image: string
+  LinkText: string
+  href: string
 }
 
 const giftServices: GiftService[] = [
   {
     id: 1,
     title: "Gift packaging",
+    image: "https://cms.coach.com/i/coach/20261102-rtl-hp4-bopis?&w=960&fmt=webp&$qlt_high$",
     description: "Add a thoughtful finishing touch to your gift.",
     icon: Gift,
+    LinkText: "Find a Store",
+    href: "/shop/stores"
   },
   {
     id: 2,
     title: "Personalization",
+    image: "https://cms.coach.com/i/coach/20261102-rtl-hp4-monogram?&w=960&fmt=webp&$qlt_high$",
     description: "Explore a personal touch on select pieces.",
     icon: Sparkles,
+    LinkText: "Shop Bags",
+    href: "/shop/women/handbags/view-all",
   },
   {
     id: 3,
     title: "Gift cards",
+    image: "https://cms.coach.com/i/coach/20261028-otl-hp4-gifting-options-d-gift-guide?&w=960&fmt=webp&$qlt_high$",
     description: "Let them choose something they love.",
     icon: CreditCard,
+    LinkText: "Explore our Gift Guide",
+    href: "/shop/gifts/gift-guide",
+
   },
   {
     id: 4,
     title: "Gift assistance",
+    image: "https://cms.coach.com/i/coach/20261028-otl-hp4-gifting-options-d-gift-cards?&w=960&fmt=webp&$qlt_high$",
     description: "Get help finding a gift for someone special.",
     icon: MessageCircle,
+    LinkText: "Shop Gift Cards",
+    href: "/support/gift-card"
   },
 ]
 
@@ -164,19 +181,20 @@ const GiftServices = () => {
   }
 
   const renderCards = () =>
-    giftServices.map(({ id, title, description, icon: Icon }) => (
+    giftServices.map(({ id, title, description,image, LinkText, href }) => (
       <article
-        className="flex min-h-48 w-[78vw] max-w-80 shrink-0 flex-col items-start border border-neutral-300 bg-white p-6 md:w-auto md:max-w-none"
+        className="flex min-h-48 w-[78vw] relative max-w-80 shrink-0 flex-col items-start border border-neutral-300 bg-white md:w-auto md:max-w-none"
         data-slide-index={id - 1}
         key={title}
       >
-        <Icon aria-hidden="true" className="mb-5 size-6 stroke-1" />
-        <h3 className="text-sm font-medium uppercase tracking-[0.12em]">
-          {title}
-        </h3>
-        <p className="mt-2 text-sm leading-relaxed text-neutral-600">
+       <img src={image} alt={title} className="w-full h-full"/>
+       <div className="absolute bottom-3">
+        <p className="mt-2 ml-6 text-[12px] font-bold scale-x-115 leading-[30px] text-white/95">
           {description}
         </p>
+        <Link className="mt-2 ml-6 text-[12px] font-bold scale-x-115 leading-[30px] text-white/95 underline underline-offset-1" to={href}>{LinkText}</Link>
+       </div>
+        
       </article>
     ))
 
@@ -185,11 +203,11 @@ const GiftServices = () => {
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
         <div className="mb-6 flex flex-col justify-center items-center gap-2">
          
-            <p className=" text-[15px] uppercase tracking-[0.18em] text-neutral-600">
+            <p className=" text-[12px] uppercase tracking-[0.18em] text-neutral-600">
               Gift Services
             </p>
             <h2
-              className="mt-2 text-xl font-medium tracking-[0.12em]"
+              className="mt-2 text-xl font-bold scale-x-105 tracking-[0.09em]"
               id="gift-services-title"
             >
               Wrap things up.

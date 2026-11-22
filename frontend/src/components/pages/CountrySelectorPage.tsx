@@ -1,22 +1,15 @@
-import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import {
-  countries,
-  readSelectedCountry,
-  saveSelectedCountry,
-} from "../country"
-import type { CountryCode } from "../country"
+import { countries } from "../country"
+import { useAppContext } from "../context/Context"
 
 const CountrySelectorPage = () => {
-  const [selectedCountry, setSelectedCountry] =
-    useState<CountryCode>(readSelectedCountry)
+  const { selectedCountry, setSelectedCountry } = useAppContext()
   const navigate = useNavigate();
 
   const handleCountryChange = (value: string) => {
     const nextCountry = countries.find((country) => country.code === value)?.code
     if (!nextCountry) return
     setSelectedCountry(nextCountry)
-    saveSelectedCountry(nextCountry)
   }
 
   return (

@@ -6,6 +6,7 @@ import CountrySelectorPage from "./components/pages/CountrySelectorPage"
 import GiftServices from "./components/pages/GiftServices"
 import WelcomeBanner from "./components/pages/WelcomeBanner"
 import AtTopList from "./components/pages/AtTopList"
+import { AppProvider } from "./components/context/Context"
 
 const HomePage = () => {
   const [mainScrollTop, setMainScrollTop] = useState(0)
@@ -41,13 +42,15 @@ const HomePage = () => {
 }
 
 const App = () => (
-  <BrowserRouter>
-    <Routes>
-      <Route element={<HomePage />} path="/" />
-      <Route element={<CountrySelectorPage />} path="/country-selector" />
-      <Route element={<Navigate replace to="/" />} path="*" />
-    </Routes>
-  </BrowserRouter>
+  <AppProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<HomePage />} path="/" />
+        <Route element={<CountrySelectorPage />} path="/country-selector" />
+        <Route element={<Navigate replace to="/" />} path="*" />
+      </Routes>
+    </BrowserRouter>
+  </AppProvider>
 )
 
 export default App
