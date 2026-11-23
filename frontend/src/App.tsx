@@ -8,6 +8,8 @@ import WelcomeBanner from "./components/pages/WelcomeBanner"
 import AtTopList from "./components/pages/AtTopList"
 import { AppProvider } from "./components/context/Context"
 import MoreThings from "./components/pages/MoreThings"
+import WeLookTogether from "./components/pages/WeLookTogether"
+import LookGoodToGether from "./components/pages/LookGoodToGether"
 
 const HomePage = () => {
   const [mainScrollTop, setMainScrollTop] = useState(0)
@@ -38,6 +40,8 @@ const HomePage = () => {
         <AtTopList />
         <GiftServices />
         <MoreThings />
+        <WeLookTogether />
+        <LookGoodToGether />
       </div>
     </div>
   )

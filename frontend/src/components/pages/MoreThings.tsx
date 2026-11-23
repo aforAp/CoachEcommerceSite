@@ -17,22 +17,28 @@ const dummyData = [
 
 const MoreThings = () => {
   return (
-    <div className="w-full">
-      <Carousel className="mx-auto w-full max-w-6xl px-12">
+    <div className="w-full mt-3">
+       <h2
+              className="mt-2 text-2xl mb-4 text-center font-medium scale-x-105 tracking-[0.05em]"
+              id="gift-services-title"
+            >
+              More things you might like
+            </h2>
+      <Carousel className="mx-auto w-full max-w-6xl px-12 mt-10">
         <CarouselContent>
           {dummyData.map((data) => (
-            <CarouselItem className="basis-full sm:basis-1/2 md:basis-1/3" key={data.id}>
-              <Card className="h-full">
-                <CardContent>
+            <CarouselItem className="basis-full sm:basis-1/2 md:basis-1/4" key={data.id}>
+              <Card className="h-full px-0 py-0 m-0 w-full gap-0 rounded-none ring-0 border-none">
+                <CardContent className="px-0 py-0">
                   <img
                     alt={data.name}
-                    className="mb-4 aspect-square w-full object-cover"
+                    className="mb-4 h-[200px] w-full object-cover p-0 m-0"
                     src={data.image}
                   />
-                  <CardTitle>{data.name}</CardTitle>
+                  <CardTitle className="ml-10">{data.name}</CardTitle>
                 </CardContent>
-                <CardFooter>
-                  <Button className="w-full">Add To Bag</Button>
+                <CardFooter className="flex align-center justify-center border-none bg-white">
+                  <Button className="w-1/2 rounded-2xl bg-white text-black/90 text-[12px] border-black/10 border-[1px]">Add To Bag</Button>
                 </CardFooter>
               </Card>
             </CarouselItem>
@@ -41,6 +47,7 @@ const MoreThings = () => {
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
+      <div className="mt-10" />
     </div>
   )
 }

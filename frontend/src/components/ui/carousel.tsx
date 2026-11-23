@@ -179,7 +179,7 @@ function CarouselPrevious({
   const { orientation, scrollPrev, canScrollPrev } = useCarousel()
 
   return (
-    <Button
+   canScrollPrev && <Button
       data-slot="carousel-previous"
       variant={variant}
       size={size}
@@ -194,7 +194,7 @@ function CarouselPrevious({
       onClick={scrollPrev}
       {...props}
     >
-      <ChevronLeftIcon />
+     {canScrollPrev && <ChevronLeftIcon />}
       <span className="sr-only">Previous slide</span>
     </Button>
   )
@@ -209,7 +209,7 @@ function CarouselNext({
   const { orientation, scrollNext, canScrollNext } = useCarousel()
 
   return (
-    <Button
+   canScrollNext && (<Button
       data-slot="carousel-next"
       variant={variant}
       size={size}
@@ -224,9 +224,10 @@ function CarouselNext({
       onClick={scrollNext}
       {...props}
     >
-      <ChevronRightIcon />
+        <ChevronRightIcon />
       <span className="sr-only">Next slide</span>
     </Button>
+   )
   )
 }
 
