@@ -183,16 +183,16 @@ const GiftServices = () => {
   const renderCards = () =>
     giftServices.map(({ id, title, description,image, LinkText, href }) => (
       <article
-        className="flex min-h-48 w-[78vw] relative max-w-80 shrink-0 flex-col items-start border border-neutral-300 bg-white md:w-auto md:max-w-none"
+        className="flex min-h-48 w-[78vw] font-roboto relative max-w-80 shrink-0 flex-col items-start border border-neutral-300 bg-white md:w-auto md:max-w-none"
         data-slide-index={id - 1}
         key={title}
       >
        <img src={image} alt={title} className="w-full h-full"/>
-       <div className="absolute bottom-3">
-        <p className="mt-2 ml-6 text-[12px] font-bold scale-x-115 leading-[30px] text-white/95">
+       <div className="absolute inset-x-0 bottom-3 px-4">
+        <p className="mt-2 max-w-full whitespace-normal break-words scale-x-115 text-[16px] ml-2 mr-2 font-bold leading-5 text-white/90">
           {description}
         </p>
-        <Link className="mt-2 ml-6 text-[12px] font-bold scale-x-115 leading-[30px] text-white/95 underline underline-offset-1" to={href}>{LinkText}</Link>
+        <Link className="mt-2 inline-block scale-x-110 max-w-full whitespace-normal break-words text-[13px] font-bold leading-5 text-white/95 underline underline-offset-1" to={href}>{LinkText}</Link>
        </div>
         
       </article>

@@ -7,6 +7,7 @@ import GiftServices from "./components/pages/GiftServices"
 import WelcomeBanner from "./components/pages/WelcomeBanner"
 import AtTopList from "./components/pages/AtTopList"
 import { AppProvider } from "./components/context/Context"
+import MoreThings from "./components/pages/MoreThings"
 
 const HomePage = () => {
   const [mainScrollTop, setMainScrollTop] = useState(0)
@@ -36,6 +37,7 @@ const HomePage = () => {
         <WelcomeBanner />
         <AtTopList />
         <GiftServices />
+        <MoreThings />
       </div>
     </div>
   )

@@ -1,5 +1,5 @@
 import { useLayoutEffect, useRef, useState } from "react"
-import { LogIn, MessageSquare, Package, Plus, Search, UserRound, X } from "lucide-react"
+import { MessageSquare, Package, Plus, Search,  X } from "lucide-react"
 import type { ActiveBrand } from "../BrandSelector"
 import BrandSelector from "../BrandSelector"
 import { navMenus } from "../navMenuData"
