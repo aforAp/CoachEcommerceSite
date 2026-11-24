@@ -183,23 +183,23 @@ const GiftServices = () => {
   const renderCards = () =>
     giftServices.map(({ id, title, description,image, LinkText, href }) => (
       <article
-        className="flex min-h-48 w-[78vw] font-roboto relative max-w-80 shrink-0 flex-col items-start border border-neutral-300 bg-white md:w-auto md:max-w-none"
+        className="flex min-h-48 w-[78vw] font-helvetica-33 text-[15px] relative max-w-80 shrink-0 flex-col items-start border border-neutral-300 bg-white md:w-auto md:max-w-none"
         data-slide-index={id - 1}
         key={title}
       >
        <img src={image} alt={title} className="w-full h-full"/>
        <div className="absolute inset-x-0 bottom-3 px-4">
-        <p className="mt-2 max-w-full whitespace-normal break-words scale-x-115 text-[16px] ml-2 mr-2 font-bold leading-5 text-white/90">
+        <p className="mt-2 max-w-full whitespace-normal break-words text-[14px] font-bold mr-2 leading-5 text-white/90">
           {description}
         </p>
-        <Link className="mt-2 inline-block scale-x-110 max-w-full whitespace-normal break-words text-[13px] font-bold leading-5 text-white/95 underline underline-offset-1" to={href}>{LinkText}</Link>
+        <Link className="mt-2 inline-block max-w-full whitespace-normal break-words text-[11px] font-bold leading-5 text-white/95 underline underline-offset-1" to={href}>{LinkText}</Link>
        </div>
         
       </article>
     ))
 
   return (
-    <section aria-labelledby="gift-services-title" className="bg-neutral-50 py-12">
+    <section aria-labelledby="gift-services-title" className="bg-neutral-50 py-12 font-helvetica-53 font-medium">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
         <div className="mb-6 flex flex-col justify-center items-center gap-2">
          
@@ -207,7 +207,7 @@ const GiftServices = () => {
               Gift Services
             </p>
             <h2
-              className="mt-2 text-xl font-bold scale-x-105 tracking-[0.09em]"
+              className="mt-2 text-xl font-helvetica-63 font-normal tracking-[0.09em]"
               id="gift-services-title"
             >
               Wrap things up.
